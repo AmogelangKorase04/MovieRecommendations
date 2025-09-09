@@ -1,1 +1,57 @@
-<p>dashboard works!</p>
+<div class="dashboard">
+  <h1>Movie Recommendation Dashboard</h1>
+
+  <section class="movies-section">
+    <h2>Top Movies</h2>
+    <ul>
+      <li *ngFor="let movie of topMovies$ | async">
+        {{movie.title}} ({{movie.year}}) - Rating: {{movie.rating}}
+      </li>
+    </ul>
+  </section>
+
+  <section class="movies-section">
+    <h2>Popular Movies</h2>
+    <ul>
+      <li *ngFor="let movie of popularMovies$ | async">
+        {{movie.title}} - Popularity: {{movie.popularity}}
+      </li>
+    </ul>
+  </section>
+
+  <section class="movies-section">
+    <h2>Critically Acclaimed</h2>
+    <ul>
+      <li *ngFor="let movie of criticallyAcclaimed$ | async">
+        {{movie.title}} - Rating: {{movie.rating}}
+      </li>
+    </ul>
+  </section>
+
+  <section class="analytics-section">
+    <h2>Analytics</h2>
+    <div *ngIf="statistics$ | async as stats">
+      <p>Total Movies: {{stats.totalMovies}}</p>
+      <p>Average Rating: {{stats.averageRating}}</p>
+      <p>Most Popular Year: {{stats.mostPopularYear}}</p>
+    </div>
+
+    <div *ngIf="byDecade$ | async as decades">
+      <h3>Movies by Decade</h3>
+      <ul>
+        <li *ngFor="let decade of decades">
+          {{decade.decade}}: {{decade.count}} movies
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="ratingVsPopularity$ | async as ratingPop">
+      <h3>Rating vs Popularity</h3>
+      <ul>
+        <li *ngFor="let item of ratingPop">
+          {{item.title}} - Rating: {{item.rating}}, Popularity: {{item.popularity}}
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
