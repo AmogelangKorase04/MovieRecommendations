@@ -1,0 +1,17 @@
+# Build results
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.vsidx
+*.vscode/
+
+# Logs
+*.log
+
+# Others
+*.dbmdl
+*.cache
